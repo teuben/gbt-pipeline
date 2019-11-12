@@ -22,7 +22,8 @@
 
 # $Id$
 
-import fitsio
+#import fitsio
+from astropy.io import fits as fitsio
 
 import sys
 import os
