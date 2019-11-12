@@ -32,7 +32,8 @@ from Pipeutils import Pipeutils
 from settings import *
 
 import blessings
-import fitsio
+#import fitsio
+from astropy.io import fits as fitsio
 
 import os
 import errno
