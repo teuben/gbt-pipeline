@@ -22,7 +22,7 @@
 
 # $Id$
 
-from ordereddict import OrderedDict
+from collections import OrderedDict
 from collections import namedtuple
 
 

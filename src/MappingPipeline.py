@@ -22,7 +22,8 @@
 
 # $Id$
 
-import fitsio
+#import fitsio
+from astropy.io import fits as fitsio
 
 from Integration import Integration
 from Calibration import Calibration

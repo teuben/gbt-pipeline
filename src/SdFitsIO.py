@@ -87,7 +87,7 @@ class SdFits:
 
         # print results
         if debug:
-            print '------------------------- All scans'
+            print('------------------------- All scans')
             for scanid in sorted(observation.scans()):
                 scanstruct = observation.get(scanid, feed, window, pol)
                 print('scan \'{0}\' obsid \'{1}\' procname \'{2}\' procscan \'{3}\''.format(scanid,
@@ -118,9 +118,9 @@ class SdFits:
         mapkeys.sort()
 
         if debug:
-            print '------------------------- Relavant scans'
+            print('------------------------- Relavant scans')
             for scanid in mapkeys:
-                print 'scan', scanid, map_scans[scanid]
+                print('scan', scanid, map_scans[scanid])
 
         maps = []  # final list of maps
         ref1 = None
@@ -129,7 +129,7 @@ class SdFits:
         mapscans = []  # temporary list of map scans for a single map
 
         if debug:
-            print 'mapkeys', mapkeys
+            print('mapkeys', mapkeys)
 
         MapParams = namedtuple("MapParams", "refscan1 mapscans refscan2")
         for idx, scan in enumerate(mapkeys):
@@ -163,12 +163,12 @@ class SdFits:
             pprint.pprint(maps)
 
             for idx, mm in enumerate(maps):
-                print "Map", idx
+                print("Map", idx)
                 if mm.refscan2:
-                    print "\tReference scans.....", mm.refscan1, mm.refscan2
+                    print("\tReference scans.....", mm.refscan1, mm.refscan2)
                 else:
-                    print "\tReference scan......", mm.refscan1
-                print "\tMap scans...........", mm.mapscans
+                    print("\tReference scan......", mm.refscan1)
+                print("\tMap scans...........", mm.mapscans)
 
         return maps
 
@@ -222,7 +222,7 @@ class SdFits:
 
                 suspectScans.add(scanid)
                 if scanid in mapscans:
-                    print 'WARNING: scan', scanid, 'has "Unknown" procedure. Skipping.'
+                    print('WARNING: scan', scanid, 'has "Unknown" procedure. Skipping.')
                 continue
 
             feed = int(rr['FDNUM'])
@@ -271,7 +271,7 @@ class SdFits:
     def nameIndexFile(self, pathname):
         # -------------------------------------------------  name index file
         if not os.path.exists(pathname):
-            print ('ERROR: Path does not exist {0}.\n'
+            print('ERROR: Path does not exist {0}.\n'
                    '       Please check and try again'.format(pathname))
             sys.exit(9)
 
@@ -285,5 +285,5 @@ class SdFits:
         else:
             # doMessage(logger,msg.ERR,'input file not recognized as a fits file.',\
             #  ' Please check the file extension and change to \'fits\' if necessary.')
-            print 'ERROR: Input file does not end with .fits:', pathname
+            print('ERROR: Input file does not end with .fits:', pathname)
             sys.exit(9)
