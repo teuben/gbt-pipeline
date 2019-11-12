@@ -29,7 +29,8 @@ import Imaging
 from PipeLogging import Logging
 from Weather import Weather
 from Pipeutils import Pipeutils
-from settings import *
+#from settings import *
+import settings
 
 import blessings
 #import fitsio
@@ -296,7 +297,7 @@ def calibrate_maps(log, cl_params, row_list, term):
             for mp, window, feed, pol in maps_for_this_window:
 
                 # pipe output will be printed in order of window
-                if PARALLEL:
+                if settings.PARALLEL:
                     p = multiprocessing.Process(target=calibrate_win_feed_pol,
                                                 args=(log, cl_params, window,
                                                       feed, pol, mp,))
@@ -309,7 +310,7 @@ def calibrate_maps(log, cl_params, row_list, term):
                     log.doMessage('DBG', 'Feed {feed} Pol {pol} '
                                   'finished.'.format(feed=feed, pol=pol))
 
-            if PARALLEL:
+            if settings.PARALLEL:
                 for pp in pids:
                     pp.start()
                 for mp, window, feed, pol in maps_for_this_window:
