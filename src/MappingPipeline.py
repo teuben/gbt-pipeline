@@ -31,14 +31,15 @@ from SdFitsIO import SdFits
 from Pipeutils import Pipeutils
 from Weather import Weather
 from PipeLogging import Logging
-from settings import *
+#from settings import *
+import settings
 
 import numpy as np
 
 import os
 import sys
 
-if CREATE_PLOTS:
+if settings.CREATE_PLOTS:
     import pylab
 
 
@@ -60,7 +61,8 @@ class MappingPipeline:
 
         try:
             self.infile = fitsio.FITS(cl_params.infilename)
-        except ValueError, eee:
+        #except ValueError, eee:
+        except ValueError as eee:
             self.log.doMessage('ERR', 'Input', eee)
             sys.exit()
 
